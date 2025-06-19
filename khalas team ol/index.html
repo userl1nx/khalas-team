@@ -1,0 +1,306 @@
+ <!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="style " content="idth=device-width, initial-scale=1.0">
+        <meta name="description" content="Rejoignez KHALAS TEAM, une équipe d'esport passionnée et compétitive, spécialisée dans Fortnite,valorant,codm,et bien d'autre. Nous combinons talent, stratégie et esprit d'équipe pour conquérir les tournois et inspirer la communauté gaming.">
+        <title>khalas team</title>
+        <link rel="stylesheet" href="style.css">
+        
+
+        <link rel="icon" href="https://ugc.production.linktr.ee/9ace05a9-6433-4a5e-9b9f-8fd9b1e1a489_LOGO-KLS-SECOND-MAILLOT-rouge.png?io=true&size=avatar-v3_0" type="image/x-icon">
+        <link rel="stylesheet" href="index2.html/index2.html">
+
+       
+
+
+   
+        
+    
+    </head>
+    <body>
+        <div class="divti">
+            
+                <p  style=" font-size: 25px; font-family:-font-heading-family;  font-style: italic; position: relative; text-align: center;  ">welcome to our site</p>
+            
+        </div>
+      <header>
+        <div class="container">
+            <div class="menu">
+                <a href="index.html">Accueil</a>
+                <a href="idex.html">Présentation</a>
+                <style>
+                    /* Style pour cacher la liste déroulante par défaut */
+                    #menu_deroulant {
+                        font-size: 40PX;
+                        text-decoration: none;
+                        display: none;
+                        position: absolute;
+                        background-color: #000000;
+                        min-width: 160px;
+                        
+                        z-index: 1;
+                    }
+                    /* Style pour les éléments du menu */
+                    #menu_deroulant a {
+                        color: rgb(255, 255, 255);
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    }
+                    #menu_deroulant a:hover {
+                        background-color: #000000;
+                    }
+            
+                    /* Style pour le texte "Boutique" */
+                    #boutique_text {
+                        font-weight: bold;
+                        font-size: 20px;
+                        cursor: pointer;
+                        color: rgb(246, 246, 250);
+                        text-decoration: none;
+                    }
+                </style>
+                
+                
+            
+            
+            
+            <!-- Texte cliquable pour ouvrir la boutique -->
+            <span id="boutique_text" onclick="toggleMenu()">Boutique</span>
+            
+            <!-- Liste déroulante -->
+            <div id="menu_deroulant">
+                <a href="index2.html">Maillot</a>
+                <a href="#">Manchette</a>
+            </div>
+            
+            <script>
+                // Fonction pour afficher ou cacher la liste déroulante au clic
+                function toggleMenu() {
+                    var menu = document.getElementById('menu_deroulant');
+                    // Si la liste est cachée, on l'affiche, sinon on la cache
+                    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+                }
+            
+                // Fermer le menu si l'utilisateur clique en dehors
+                window.onclick = function(event) {
+                    if (!event.target.matches('#boutique_text')) {
+                        var dropdown = document.getElementById('menu_deroulant');
+                        if (dropdown.style.display === 'block') {
+                            dropdown.style.display = 'none';
+                        }
+                    }
+                }
+            </script>
+            </div>
+            <div class="image-container">
+              <a href="index.html">
+                  <img src="https://ugc.production.linktr.ee/9ace05a9-6433-4a5e-9b9f-8fd9b1e1a489_LOGO-KLS-SECOND-MAILLOT-rouge.png?io=true&size=avatar-v3_0" alt="" width="75" height="auto" style="position: absolute;">
+                </a>
+            </div>
+        </div>
+            
+        </nav>
+        <div id="devise-menu">
+            
+            <select id="devise" onchange="changerPrix()">
+                <option value="fr_cfa">FR CFA</option>
+                <option value="euro">Euro (€)</option>
+                <option value="usd">Dollars US ($)</option>
+                <option value="cad">CAD (Dollar Canadien)</option>
+            </select>
+        </div>
+        
+        <!-- Produits avec leurs prix -->
+     
+       
+     <Script>
+        // Taux de conversion
+        const tauxConversion = {
+            'fr_cfa': 1,       // Pas de conversion pour le CFA
+            'euro': 0.0015,    // 1 CFA = 0.0015 Euro
+            'usd': 0.0016,     // 1 CFA = 0.0016 Dollar US
+            'cad': 0.0021      // 1 CFA = 0.0021 Dollar Canadien
+        };
+
+        // Fonction pour changer les prix en fonction de la devise sélectionnée
+        function changerPrix() {
+            // Récupère la devise sélectionnée
+            const devise = document.getElementById('devise').value;
+
+            // Récupère les prix originaux en CFA
+            const prixMaillot2023 = 500; // Prix du maillot 2023 en CFA
+            const prixMaillot2024 = 1000; // Prix du maillot 2024 en CFA
+
+            // Applique la conversion en fonction de la devise choisie
+            const prixConverti2023 = prixMaillot2023 * tauxConversion[devise];
+            const prixConverti2024 = prixMaillot2024 * tauxConversion[devise];
+
+            // Met à jour les prix des maillots
+            document.getElementById('maillot-2023').textContent = prixConverti2023.toFixed(2);
+            document.getElementById('maillot-2024').textContent = prixConverti2024.toFixed(2);
+
+            // Met à jour l'unité de la devise affichée
+            let symboleDevise = '';
+            switch (devise) {
+                case 'fr_cfa': symboleDevise = 'CFA'; break;
+                case 'euro': symboleDevise = '€'; break;
+                case 'usd': symboleDevise = '$'; break;
+                case 'cad': symboleDevise = 'CA$'; break;
+            }
+            document.querySelectorAll('#devise-symbole').forEach(elem => {
+                elem.textContent = symboleDevise;
+            });
+        }
+
+        // Initialiser le prix dès le début
+        changerPrix();
+    </script>
+            
+      </header>
+     <section>
+          <div>
+              <H1>MAILLOTS 2024</H1>
+              <iframe width="1000" height="800" src="khalasteam clip.mp4" allowfullscreen></iframe>
+            
+                  </video>
+          
+            </div>
+            <h2 style="gap: 20px;">NOS MAILLOTS</h2>
+     <section style="display: flex;">
+        
+        <div class="cart" style="position: absolute;top: 90px;right: 20px; left: 720PX;margin-left: 590PX;">
+              Panier : <span id="cart-count">0</span> article(s)
+        </div>
+       
+        <div class="product" style="margin-left: 20px;text-align: start;">
+           
+         <a href="index2.html" target="_blank">
+            <img src="https://vitality.gg/cdn/shop/files/NA_jersey_1500x1500_01.jpg?v=1749579407&width=1100" alt="" width="400px" height="auto">
+         </a>
+         
+           <p style="color: aliceblue;font-size: 30px;">maillots 2024</p>
+           <p style="color: aliceblue;">Prix : 20€</p>
+           <button onclick="addToCart()">Ajouter au Panier</button>
+        </div>
+   
+        <div class="product">
+           
+           <a href="index2.html" target="_blank">
+             <img src="https://vitality.gg/cdn/shop/files/CS2_SANS_GGBET_front_02.png?v=1749576517&width=1100" alt="" width="400px" height="auto" >
+           </a>
+           <p style="color: aliceblue;font-size: 30px;">maillots 2024</p>
+
+           <p style="color: aliceblue;">Prix : 35€</p>
+           <button onclick="addToCart()">Ajouter au Panier</button>
+   
+    
+         </div>
+      </section>
+      <h2 style="margin-left: 30px;">
+        Actualités de nos joueurs :
+      </h2>
+      <section class="filter">
+     
+        <div class="filter">
+         <div class="overlay">
+
+            <img src="https://i.pinimg.com/736x/39/dd/4d/39dd4da08ecccc0159d79598365e995e.jpg" alt="" width="600px" height="100vh" >
+            
+
+        
+        
+         </div>
+         <div class="overlay" style="margin-left: 30px;">
+            <img src="https://i.pinimg.com/736x/78/71/ef/7871efb1e4d2f4267f569dae75f8b95b.jpg" alt="" width="170px" height="100vh" >
+         </div>
+         <div class="overlay" style=" margin-left: 30PX;">
+            <p style="font-size: 40PX;font-family: 'Courier New', Courier, monospace;">autre jeux</p>
+        </div>
+        
+        
+        
+
+       </section>
+     <section>
+          <div class="email" style="background-color: rgb(254 157 0);font-size: 20PX;">
+            <h2 style="text-align: center; color: black;"> SUBSCRIBE AT KLS TEAM</h2>
+             <p style="text-align: center;color: black;">Pour être le premier au courant des nouvelles sorties </p>
+
+             <input id="NewsletterForm--sections--20106780672331__newsletter" type="email" name="contact[email]" class="field__input" value="" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email" placeholder="E-mail" required="">
+          </div>
+
+
+
+     </section>
+   
+      <footer>
+        
+        <a href="https://x.com/sustainnov">
+         <button class="x" title="twitter/x" >♡ suivre sur x</button>
+        </a>
+        <div class="social">
+            <a href="https://www.twitch.tv/khalassteam" target="_blank" title="twitch">
+                <img src="https://i.pinimg.com/736x/ee/87/d9/ee87d9d075057f90f0a8580344beb329.jpg" alt="" width="30PX" height="auto">
+            </a>
+            <a href="https://www.youtube.com/@khalassteam5296" target="_blank" title="instagram">
+                <img src="https://i.pinimg.com/enabled_lo_mid/736x/19/f2/25/19f225c0fd3b9206856b0a479184d0fd.jpg" alt="" width="30PX" height="auto">
+            </a>
+            <a href="https://discord.gg/Z4eBs7QR" target="_blank" title="discord">
+                <img src="https://i.pinimg.com/736x/00/11/83/0011832849c45da8952954acd089e2dc.jpg" alt="" width="30PX" height="auto">
+            </a>
+            <a href="https://www.tiktok.com/@klsteam?lang=fr" target="_blank" title="titok">
+                <img src="https://i.pinimg.com/736x/db/bb/57/dbbb57e4a4dd74be71504cdbac7a3095.jpg" alt="" width="30Px" height="auto">
+            </a>
+            <a href="https://linktr.ee/KhalassTeam" target="_blank" title="link tree">
+                <img src="https://ugc.production.linktr.ee/9ace05a9-6433-4a5e-9b9f-8fd9b1e1a489_LOGO-KLS-SECOND-MAILLOT-rouge.png?io=true&size=avatar-v3_0" alt="" width="30px" height="auto">
+
+            </a>
+            <a href="https://www.instagram.com/khalassteam/" target="_blank" title="instagram">
+                <img src="https://i.pinimg.com/736x/3f/cc/39/3fcc393efcfa77d0424970e67f4f97c3.jpg" alt="" width="30PX" height="auto">
+            </a>
+           
+           
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      </footer>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
